@@ -1,0 +1,1 @@
+INSERT INTO careerAcc($1, $2);
