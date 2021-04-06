@@ -1,13 +1,57 @@
-import React, {Component} from 'react'
+import React, {Component, useState, useEffect} from 'react'
 import Main from './Main'
-import routes from '.././routes'
+import axios from "axios";
+import {Stack, 
+    Button, 
+    ButtonGroup,
+    FormControl, 
+    FormLabel, 
+    Input, 
+    InputGroup, 
+    InputRightElement,
+    FormHelperText, 
+    Container,
+    Box,
+    Heading} from '@chakra-ui/react'
+
+
 
 
 const JobListing = (props)=> {
 console.log(props)
+
+
+
+const options = {
+  method: 'GET',
+  url: 'https://job-listings.p.rapidapi.com/api/job/listing/',
+  params: {url: 'https://www.indeed.com/q-data-scientist-l-silicon-valley-jobs.html'},
+  headers: {
+    'x-rapidapi-key': '8dd8bd2453msh1f14a9f4a3fff44p168554jsn062608cb284f',
+    'x-rapidapi-host': 'job-listings.p.rapidapi.com'
+  }
+};
+
+
+useEffect(()=>{
+
+    axios.request(options)
+    .then((response)=> {
+        console.log(response.data, 'job listing API responses');
+    }).catch((error)=> {
+        console.error(error);
+    });
+
+
+}, [])
+
+
   
     return (
-        <div className="jobListingContainer">
+        <div>
+            <Container maxW='sm'>
+            <Box padding='5' bg='gray.100'>
+
             <h1 className="jlheader ">Job Listing</h1>
             <br></br>
             <p className="descrip">Company: </p> {props.jobListing.company}
@@ -59,6 +103,8 @@ console.log(props)
             <br></br>
             <p className="descrip">Seniority Level: </p>{props.jobListing.senioritylevel}
             <br></br>
+            </Box>
+            </Container>
         </div>
     )
 

@@ -1,78 +1,62 @@
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
+import RegisterForm from './RegisterForm'
+import LoginForm from './LoginForm'
+import {ChakraProvider, CSSReset, Button, Heading, Text} from '@chakra-ui/react'
+
 
 const Auth = (props) =>{
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-
-    
-useEffect(()=>{
-
-axios.post('/auth/register', {username, password}).then((res)=>{
-    setUsername(res.data)
-    setPassword(res.data)
-}).catch(err=> console.log(err))
-
-}, [])
-
-/**axios.get(`https://pokeapi.co/api/v2/pokemon`).then((res)=>{
-    setList(res.data.results)
-    console.log(res.data.results)
-}).catch(err => console.log(err))   */
-
-    const handleRegister = ()=>{
-
-    }
 
 
-    const handleSignIn =(e)=>{
-        e.preventDefault()
-        props.add(username)
-        props.add(password)
-        setUsername('')
-        setPassword('')
-
-    }
-
-return (
-    <div>
-   <h1>Login Page</h1>
-   <form onSubmit={handleSignIn}>
-     <p>Username</p><input />
-    <p>Password</p> <input />
-
-   </form>
+  const [toggleLogin, setToggleLogin] = useState(false)
+  const [toggleRegister, setToggleRegister] = useState(false)
   
 
-    </div>
+  const displayLoginForm = ()=>{
+    setToggleLogin(true)
+    setToggleRegister(false)
+  }
+
+  const displayRegisterForm = ()=>{
+    setToggleRegister(true)
+    setToggleLogin(false)
+  }
+
+return (
+    <>
+        <Heading mb={4} bg='gray.100'>Welcome to your Career Development Tracker</Heading>
+        <Text fontSize='sm' mb={4}>Track your progress througout your career and help prepare for promotion interviews</Text>
+        <Button colorScheme='teal' 
+                size='md' 
+                margin='auto'
+                onClick={displayLoginForm}
+                >Login
+        </Button>
+
+        <Button 
+              colorScheme='teal' 
+              size='md' 
+              onClick={displayRegisterForm}
+              >Register
+        </Button>
+
+
+        <ChakraProvider>
+        <CSSReset/>
+
+        { toggleLogin ?  <LoginForm/>  : null }
+        { toggleRegister ?  <RegisterForm/> : null }
+        
+        </ChakraProvider>
+
+
+     
+    </>
  
 )    
-
 
 }
 
 export default Auth
 
-/**import React, { useState } from 'react'
 
-const AddTodo = (props) => {
-  const [userInput, setUserInput] = useState('')
-
-  function handleAddTodo(e) {
-    e.preventDefault()
-    props.addTodo(userInput)
-    setUserInput('')
-  }
-
-  return (
-    <form onSubmit={handleAddTodo}>
-      <input
-        placeholder="Add a todo!"
-        value={userInput}
-        onChange={(e) => setUserInput(e.target.value)}
-      />
-      <button>Submit</button>
-    </form>
-  )
-}
-export default AddTodo */

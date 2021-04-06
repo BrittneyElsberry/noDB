@@ -2,7 +2,18 @@ import React, {Component} from 'react'
 // import Main from './Main'
 import axios from 'axios'
 import Edit from './Edit'
-
+import {Stack, 
+    Button, 
+    ButtonGroup,
+    FormControl, 
+    FormLabel, 
+    Input, 
+    InputGroup, 
+    InputRightElement,
+    FormHelperText, 
+    Container,
+    Box,
+    Heading} from '@chakra-ui/react'
 
 
 class Accomplishments extends Component{
@@ -81,32 +92,34 @@ this.setState({editing: true})
 render(){
 
     return(
-        <div className="AccompContainer"> 
-            <br></br>
-            <br></br>
-            <h1 className="accompHeader">Career Accomplishments</h1>
-            <br></br>
+
+
+        <> 
+
+        <Container maxW='lg' centerContent>
+        <Box padding='5' bg='gray.100'>
+
             
-            <input className="AccompInput" 
+            <h1 className="accompHeader">Career Accomplishments</h1>
+           
+            
+            <Input  isRequired 
                     type="text" 
                     value={this.state.skills}
-                   onChange={(e)=>this.handleChange(e.target.value)}></input>
-        
-            <button className="submitButton" onClick={()=>this.postSkills(this.state.skills)}>Submit</button>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+                   onChange={(e)=>this.handleChange(e.target.value)}/>
+           
+            <Button variant='solid' colorScheme='teal' size='sm' onClick={()=>this.postSkills(this.state.skills)}>Submit</Button>
+          
             <ul>
             {this.state.accomplishments.map(accomp => {
              return <Edit key={accomp.id} accomp={accomp} deleteSkills={this.deleteSkills} updateSkills={this.updateSkills} handleChange={this.handleChange} skills={this.state.skills}/> })}
              {/* return <ul key={accomp.id}>{accomp.skills}<button onClick={()=>this.deleteSkills(this.state.accomplishments.id)}>X</button><button onClick={(e)=>this.handleEdit(e)}>Edit</button></ul> })} */}</ul>
             
-  
+             </Box>
+             </Container>
             
 
-        </div>
+        </>
     )
 }
 }

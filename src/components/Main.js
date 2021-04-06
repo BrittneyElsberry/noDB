@@ -78,7 +78,7 @@ return(
       <div className="mainContainer">
       <JobListing jobListing={this.state.jobListing} />
     <div className="goalsAndAccompContainer">
-      <Goals />
+      {/* <Goals /> */}
       <Accomplishments />
       </div>
 </div>
