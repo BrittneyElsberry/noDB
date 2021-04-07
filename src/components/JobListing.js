@@ -33,17 +33,17 @@ const options = {
 };
 
 
-useEffect(()=>{
+// useEffect(()=>{
 
-    axios.request(options)
-    .then((response)=> {
-        console.log(response.data, 'job listing API responses');
-    }).catch((error)=> {
-        console.error(error);
-    });
+//     axios.request(options)
+//     .then((response)=> {
+//         console.log(response.data, 'job listing API responses');
+//     }).catch((error)=> {
+//         console.error(error);
+//     });
 
 
-}, [])
+// }, [])
 
 
   

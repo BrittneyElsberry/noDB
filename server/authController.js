@@ -5,9 +5,10 @@ module.exports = {
     register: async (req, res)=> {
 
         try{
-        const {username, password}  = req.body
+        const {email, password, firstName, lastName}  = req.body
+        console.log(req.body, 'register function')
         const db = req.app.get('db')
-        const result = await db.find_user_by_username([username])
+        const result = await db.users.find_user_by_email([email])
         const existingUser = result[0]
         console.log(result)
         if(existingUser){
@@ -15,28 +16,23 @@ module.exports = {
         }
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
-        const registeredUser = await db.user.create_user([username, hash])
+        const registeredUser = await db.users.create_user([email, hash, firstName, lastName])
         const user = registeredUser[0]
-      
-        req.session.user = 
-        {
-            username: user.username,
-            id: user.id,
-           
-        }
-       return res.status(201).send(req.session.user)
-    //    delete user.password
+        delete user.password
+        req.session.user = user
+    //    return res.status(201).send(req.session.user) this is commented out in Workit
+   
     }
     catch(err){
-        console.log(err)
+        console.log(err, 'this is a registration error')
     }
     },
 
 
     login: async (req, res)=>{
-        const {username, password} = req.body
+        const {email, password} = req.body
         const db = req.app.get('db')
-        const foundUser = await db.find_user_by_username([username])
+        const foundUser = await db.find_user_by_username([email])
         const user = foundUser[0]
         if(!user){
             res.status(401).send('User not found. Please register as a new user before logging in')
@@ -47,12 +43,8 @@ module.exports = {
             res.status(403).send('Incorrect Password')
         }
 
-        req.session.user = {
-            username: user.username,
-            id: user.id,
-            
-        }
         delete user.password
+        req.session.user = user
         return res.status(200).send(req.session.user)
       
     },

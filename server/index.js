@@ -18,7 +18,7 @@ massive({
 .then((db) =>{
     app.set('db', db)
     console.log('db connected')
-    app.listen(SERVER_PORT, ()=> console.log(`running on ${SERVER_PORT} babay`))
+    app.listen(SERVER_PORT, ()=> console.log(`running on ${SERVER_PORT}`))
 })
 
 
@@ -32,18 +32,10 @@ app.use(session({
 //AUTH END POINTS
 
 
-app.post('/register', authCTRL.register)
+app.post(`/register`, authCTRL.register)
 app.post('/login', authCTRL.login)
 app.get(`/myaccount`, authCTRL.getUser)
 app.post(`/logout`, authCTRL.logout)
-
-/**app.post('/api/auth/register', userCtrl.register);
-app.post('/api/auth/login', userCtrl.login);
-app.get('/api/auth/me', userCtrl.getUser);
-app.post('/api/auth/logout', userCtrl.logout); */
-
-
-
 
 
 
