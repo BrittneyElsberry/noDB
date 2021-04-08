@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Button} from '@chakra-ui/react'
 // import Accomplishments from './Accomplishments'
 // import axios from 'axios'
 
@@ -22,31 +23,40 @@ handleEditChange=(e)=>{
 }
 
 render(){
-    const {accomp, deleteSkills, updateSkills, skills} = this.props
+    const {accomp, deleteSkills, editSkills, skills} = this.props
     
 return(
 
     <>
-    {this.state.editing ? (
+    {this.state.editing ? 
+    
+    (
 
         <li><input className="editInput" 
                     value={this.state.userInput}
                     type="text" 
                     onChange={(e)=>this.handleEditChange(e)}/>
 
-       <button className="editSavebtn" onClick={()=> 
-       {
-           updateSkills(accomp.id, this.state.userInput)
-           this.setState({editing: false})
-        }}>Save</button></li>
-    ): (
-        <li className="accompListEditXbtns">
-              {accomp.skills}
-             
-             <button className="editXbtn" onClick={()=>deleteSkills(accomp.id)}>X</button>
-             <button className="editbtn" onClick={(e)=>this.toggleEditMode(e)}>Edit</button>
+                    <Button className="editSavebtn" 
+                            size='xs'
+                            variant='outline'
+                            onClick={()=>{
+                                            editSkills(accomp.id, this.state.userInput)
+                                            this.setState({editing: false})
+                                        }}>
+                Save</Button>
         </li>
-    ) }
+
+    ): 
+    
+    (
+        <li className="accompListEditXbtns">
+              {accomp}
+             
+             <Button size="xs" variant="ghost" className="editXbtn" onClick={()=>deleteSkills(accomp.id)}>X</Button>
+             <Button size="xs" variant='ghost' className="editbtn" onClick={(e)=>this.toggleEditMode(e)}>Edit</Button>
+        </li>
+    )}
     </>
             )
 

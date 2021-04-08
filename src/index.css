@@ -77,9 +77,9 @@ code {
   color: #22223B;
 } */
 
+/**
 .myRoleButton, .submitButton, .goalsSubmitbtn, .editSavebtn, .editXbtn, .editbtn, .startDatebtn, .endDatebtn{
   background-color:  #dd6e42;
-  /* color: #22223B; */
   color: #fdfffc;
   font-weight: bold;
   border-radius: 10%;
@@ -87,7 +87,7 @@ code {
   font-size: 11px;
   opacity: .75;
 
-}
+} */
 
 .endDatebtn, .startDatebtn, .myRoleButton, .submitButton {
  margin-left: 2px;
@@ -120,18 +120,24 @@ code {
 }
 
 
-.jlheader, .goalsHeader, .accompHeader, #roleHeader{
-font-size: 1.0em;
+.jlheader, .goalsHeader, .accompHeader{
+font-size: 1.0rem;
 text-align: center;
-color:#fdfffc;
+color: teal;
 font-weight: bold;
+}
+
+#roleHeader{
+  color: white;
+  font-weight: bold;
+  font-size: 1.0rem;
 }
 
 .jobListingContainer, .AccompContainer, .goalsContainer {
   margin-top: 20px;
   box-shadow: 4px 4px 4px #dd6e42;
   overflow: auto;
-  font-size: 0.75em;
+  font-size: 0.75rem;
   flex-shrink: 2;
   margin-left: 5%;
 }
@@ -153,11 +159,11 @@ background-color: #00afb9;
 }
 
 .jobContent{
-  font-size: 1.0em;
+  font-size: .70rem;
 }
-li, .AccompList{
+/* li, .AccompList{
   list-style: circle;
-}
+} */
 
 
 .goalsContainer, .AccompContainer {
@@ -187,11 +193,17 @@ li, .AccompList{
 
 .descrip{
 font-weight: bold;
-font-size: 1.0em;
+font-size: 1.0rem;
 }
 
 .App {
   width: 100vw;
+}
+
+.accomp-list-items{
+  font-size: 0.7rem;
+  color: teal;
+  list-style: none;
 }
 
 /*

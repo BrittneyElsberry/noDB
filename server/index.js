@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 authCTRL = require('./authController')
+skillsCTRL = require('./skillsController')
 const massive = require('massive')
 const session = require('express-session')
 const app = express()
@@ -29,7 +30,7 @@ app.use(session({
     cookie: {maxAge: 30 * 24 * 60 * 60 * 1000}
 }))
 
-//AUTH END POINTS
+//AUTH ENDPOINTS
 
 
 app.post(`/register`, authCTRL.register)
@@ -40,12 +41,19 @@ app.post(`/logout`, authCTRL.logout)
 
 
 
-//End points
+// Skills Endpoints
 
-app.get('/api/careerSkills', ctrl.getSkills) //test in postman was successful!!
-app.post('/api/careerSkills', ctrl.addSkills) //test in postman successful
-app.put('/api/careerSkills/:id', ctrl.editSkills)
-app.delete('/api/careerSkills/:id', ctrl.deleteSkills)
+app.get(`/getskills`, skillsCTRL.getSkills)
+app.post(`/addskills`, skillsCTRL.addSkills)
+app.put(`/editskills/:id`, skillsCTRL.editSkills)
+app.delete(`/deleteskills`, skillsCTRL.deleteSkills)
+
+// app.get('/api/careerSkills', ctrl.getSkills) //test in postman was successful!!
+// app.post('/api/careerSkills', ctrl.addSkills) //test in postman successful
+// app.put('/api/careerSkills/:id', ctrl.editSkills)
+// app.delete('/api/careerSkills/:id', ctrl.deleteSkills)
+
+//Job listing, my role Endpoints
 app.get('/api/jobListing', ctrl.getJobListing)
 app.post('/api/myRole', ctrl.getMyRole)
 app.get('/api/home')

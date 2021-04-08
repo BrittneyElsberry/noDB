@@ -12,7 +12,7 @@ last_name VARCHAR(100)
 );
 
 CREATE TABLE careerAcc (
-accomp_id INT PRIMARY KEY, 
+accomp_id SERIAL PRIMARY KEY, 
 accomplishments VARCHAR(2000),
 user_id INT REFERENCES users(user_id));
 

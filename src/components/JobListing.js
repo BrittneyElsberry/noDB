@@ -12,7 +12,8 @@ import {Stack,
     FormHelperText, 
     Container,
     Box,
-    Heading} from '@chakra-ui/react'
+    Heading,
+    Flex} from '@chakra-ui/react'
 
 
 
@@ -49,7 +50,7 @@ const options = {
   
     return (
         <div>
-            <Container maxW='sm'>
+            <Container maxW='sm' height='100%'>
             <Box padding='5' bg='gray.100'>
 
             <h1 className="jlheader ">Job Listing</h1>
@@ -63,14 +64,14 @@ const options = {
             <p className="descrip" >About: </p> <span className="jobContent"> <br></br>{props.jobListing.about}</span>
             <br></br>
             <br></br>
-            <br></br>
-            <p className="descrip">Responsibilities: </p><br></br> {props.jobListing.responsibilities}
+            <p className="descrip">Responsibilities: </p><br></br> <span className='jobContent'>{props.jobListing.responsibilities}</span>
             <br></br>
             <br></br>
             <p className="descrip"> Skill Requirements:</p> 
             <br></br>
+
             {props.jobListing.skillrequirements ? (
-                         <ul><li>{props.jobListing.skillrequirements[0]}</li>
+                         <ul className='jobContent'><li>{props.jobListing.skillrequirements[0]}</li>
                          <li>{props.jobListing.skillrequirements[1]}</li>
                          <li>{props.jobListing.skillrequirements[2]}</li>
                          <li>{props.jobListing.skillrequirements[3]}</li>
@@ -86,7 +87,7 @@ const options = {
             <br></br>
             {props.jobListing.technicalknowledgerequirements ? (
 
-            <ul ><li>{props.jobListing.technicalknowledgerequirements[0]}</li>
+            <ul className='jobContent'><li>{props.jobListing.technicalknowledgerequirements[0]}</li>
             <li>{props.jobListing.technicalknowledgerequirements[1]}</li>
             <li>{props.jobListing.technicalknowledgerequirements[2]}</li>
             <li>{props.jobListing.technicalknowledgerequirements[3]}</li>
@@ -97,11 +98,9 @@ const options = {
             </ul> ) : null }
             
             <br></br>
+            <p className="descrip">Employement Type:</p> <p className='jobContent'>{props.jobListing.employmenttype}</p>
             <br></br>
-            <p className="descrip">Employement Type:</p>{props.jobListing.employmenttype}
-            <br></br>
-            <br></br>
-            <p className="descrip">Seniority Level: </p>{props.jobListing.senioritylevel}
+            <p className="descrip">Seniority Level: </p> <p className='jobContent'>{props.jobListing.senioritylevel}</p>
             <br></br>
             </Box>
             </Container>

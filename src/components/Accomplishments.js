@@ -34,17 +34,21 @@ componentDidMount(){
 
 
 getSkills=()=>{
-    axios.get('/api/careerSkills')
+    axios.get('/getskills')
     .then(res => {
+        console.log(res.data)
         this.setState({
             accomplishments: res.data
         })
+        
+        console.log(this.state.accomplishments, 'this is accomplishments array')
+    
     }).catch(err => console.log(err))
     }
 
 
-    postSkills=(skills)=>{
-        axios.post('/api/careerSkills', {skills}) 
+    addSkills=(skills)=>{
+        axios.post('/addskills', {skills}) 
         .then(res => {
             console.log(res.data)
             this.setState({
@@ -55,8 +59,8 @@ getSkills=()=>{
         }).catch(err => console.log(err))
         }
 
-        updateSkills= (id, skills) =>{
-            axios.put(`/api/careerSkills/${id}`, {skills}) 
+        editSkills= (id, skills) =>{
+            axios.put(`/editskills/${id}`, {skills}) 
             .then(res => {
                 console.log(res.data)
                 this.setState({
@@ -68,7 +72,7 @@ getSkills=()=>{
 
 
   deleteSkills = id =>{
-      axios.delete(`/api/careerSkills/${id}`)
+      axios.delete(`/deleteskills${id}`)
       .then(res => {
           this.setState({
                 accomplishments: res.data
@@ -108,11 +112,11 @@ render(){
                     value={this.state.skills}
                    onChange={(e)=>this.handleChange(e.target.value)}/>
            
-            <Button variant='solid' colorScheme='teal' size='sm' onClick={()=>this.postSkills(this.state.skills)}>Submit</Button>
+            <Button variant='solid' colorScheme='teal' size='sm' onClick={()=>this.addSkills(this.state.skills)}>Submit</Button>
           
             <ul>
             {this.state.accomplishments.map(accomp => {
-             return <Edit key={accomp.id} accomp={accomp} deleteSkills={this.deleteSkills} updateSkills={this.updateSkills} handleChange={this.handleChange} skills={this.state.skills}/> })}
+             return <li className='accomp-list-items'> <Edit key={accomp.accomp_id} accomp={accomp.accomplishments} deleteSkills={this.deleteSkills} editSkills={this.editSkills} handleChange={this.handleChange} skills={this.state.skills}/> </li> })}
              {/* return <ul key={accomp.id}>{accomp.skills}<button onClick={()=>this.deleteSkills(this.state.accomplishments.id)}>X</button><button onClick={(e)=>this.handleEdit(e)}>Edit</button></ul> })} */}</ul>
             
              </Box>

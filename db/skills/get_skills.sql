@@ -1,0 +1,1 @@
+SELECT * from careerAcc where user_id = $1;

@@ -1,4 +1,13 @@
+import {Button, ButtonGroup} from '@chakra-ui/react'
+import {Link} from 'react-router-dom'
+import axios from 'axios'
+
+
 const Header = (props)=>{
+
+    const logout = ()=>{
+        axios.post(`/logout`)
+    }
 
 
 
@@ -17,15 +26,18 @@ return <div className="headerContainer">
                 <h1 id="jobTitleDisplayed">{props.savedRole}</h1>
 
                     <div className='nav-btns'>
-                        <button>
-                            Profile
-                        </button>
-                        <button>
-                            Logout
-                        </button>
-                        <button>
+                        <Button size="sm">
                             Goals
-                        </button>
+                        </Button>
+                        <Button size="sm">
+                            Profile
+                        </Button>
+                        
+                       <Link to='/'><Button size="sm">
+                            Logout
+                        </Button></Link> 
+                       
+                     
 
                     </div>
             <div>    
