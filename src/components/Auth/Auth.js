@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import RegisterForm from './RegisterForm'
 import LoginForm from './LoginForm'
-import {ChakraProvider, CSSReset, Button, Heading, Text} from '@chakra-ui/react'
+import {ChakraProvider, CSSReset, Button, Heading, Text, Flex, Spacer, Box} from '@chakra-ui/react'
 
 
 const Auth = (props) =>{
@@ -23,22 +23,35 @@ const Auth = (props) =>{
   }
 
 return (
-    <>
-        <Heading mb={4} bg='gray.100'>Welcome to your Career Development Tracker</Heading>
-        <Text fontSize='sm' mb={4}>Track your progress througout your career and help prepare for promotion interviews</Text>
-        <Button colorScheme='teal' 
-                size='md' 
-                margin='auto'
-                onClick={displayLoginForm}
-                >Login
-        </Button>
+    <>  
 
-        <Button 
-              colorScheme='teal' 
-              size='md' 
-              onClick={displayRegisterForm}
-              >Register
-        </Button>
+          <Flex>
+            <Box p="2"  >
+              <Heading size="md" color='teal'>Career Development Tracker</Heading>
+              </Box>
+              <Spacer/>
+                <Box>
+                  <Button colorScheme='teal' 
+                          size='md' 
+                          mr='4'
+                         
+                          onClick={displayLoginForm}
+                          >Login
+                  </Button>
+
+                  <Button 
+                        colorScheme='teal' 
+                        size='md' 
+                        onClick={displayRegisterForm}
+                        >Register
+                  </Button>
+                  </Box>
+          </Flex>
+              <Text fontSize='sm' mb={4}>Track your progress througout your career and help prepare for promotion interviews</Text>
+
+
+
+
 
 
         <ChakraProvider>

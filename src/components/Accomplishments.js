@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, useState, useEffect} from 'react'
 // import Main from './Main'
 import axios from 'axios'
 import Edit from './Edit'
@@ -13,111 +13,112 @@ import {Stack,
     FormHelperText, 
     Container,
     Box,
-    Heading} from '@chakra-ui/react'
+    Heading,
+    Flex,
+    Spacer} from '@chakra-ui/react'
+// import { getSkills } from '../../server/skillsController'
 
 
-class Accomplishments extends Component{
-constructor(){
-    super()
-    this.state = {
-        id: 0,
-        skills: '',
-        accomplishments: [],
-        editing: false
-
-    }
-}
-
-componentDidMount(){
-    this.getSkills()
-}
+const Accomplishments =()=>{
 
 
-getSkills=()=>{
-    axios.get('/getskills')
-    .then(res => {
-        console.log(res.data)
-        this.setState({
-            accomplishments: res.data
-        })
-        
-        console.log(this.state.accomplishments, 'this is accomplishments array')
-    
-    }).catch(err => console.log(err))
-    }
+const [skills, setSkills] = useState('')
+const [accomplishments, setAccomplishments] = useState('')
+const [editing, setEditing] = useState(false)
 
 
-    addSkills=(skills)=>{
-        axios.post('/addskills', {skills}) 
-        .then(res => {
-            console.log(res.data)
-            this.setState({
-                accomplishments: res.data,
-                skills: ''
-                
-            })
-        }).catch(err => console.log(err))
-        }
 
-        editSkills= (id, skills) =>{
-            axios.put(`/editskills/${id}`, {skills}) 
+            useEffect(()=>{
+            getSkills()
+
+            }, [])
+
+
+
+
+        const getSkills=()=>{
+            axios.get('/getskills')
             .then(res => {
                 console.log(res.data)
-                this.setState({
-                    accomplishments: res.data
-                })
+                setAccomplishments(res.data)
+            
             }).catch(err => console.log(err))
             }
-    
 
 
-  deleteSkills = id =>{
-      axios.delete(`/deleteskills${id}`)
-      .then(res => {
-          this.setState({
-                accomplishments: res.data
-          })
-      }).catch(err => console.log(err))
-  }      
+        const  addSkills=(skills)=>{
+                axios.post('/addskills', {skills}) 
+                .then(_=> {
+                
+                    getSkills()
+                    
+            
+                }).catch(err => console.log(err))
+                }
 
-
- handleChange= e =>{
-     console.log(e)
-    this.setState({skills: e})
- }  
-        
-
-handleEdit=()=>{
-this.setState({editing: true}) 
-}
-
-
-
-render(){
-
-    return(
-
+        const  editSkills= (id, skills) =>{
+                    axios.put(`/editskills/${id}`, {skills}) 
+                    .then(res => {
+                    
+                        setAccomplishments(res.data)
+                    
+                    })  
+                        .catch(err => console.log(err))
+                    }
+            
+                    
+                    const deleteSkills = id =>{
+                        axios.delete(`/deleteskills/${id}`)
+                        .then(_ => {
+                            getSkills()
+                        }).catch(err => console.log(err))
+                    }      
+                    
+                    
+                    const handleChange= e =>{
+                        console.log(e)
+                        setSkills(e)
+                        
+                    }  
+                    
+                    
+                    const handleEdit=()=>{
+                        setEditing(true)
+                    }
+                    
+                    
+                    console.log(accomplishments, 'after editing')
+            
+            return(
+                
 
         <> 
 
-        <Container maxW='lg' centerContent>
+        <Container maxW='lg' centerContent width='100%'>
         <Box padding='5' bg='gray.100'>
 
             
             <h1 className="accompHeader">Career Accomplishments</h1>
            
             
-            <Input  isRequired 
+            <Input  size='xs'
+                    isRequired 
                     type="text" 
-                    value={this.state.skills}
-                   onChange={(e)=>this.handleChange(e.target.value)}/>
+                    value={skills}
+                   onChange={(e)=>handleChange(e.target.value)}/>
            
-            <Button variant='solid' colorScheme='teal' size='sm' onClick={()=>this.addSkills(this.state.skills)}>Submit</Button>
+            <Button variant='solid' colorScheme='teal' size='xs' onClick={()=>addSkills(skills)}>Submit</Button>
           
-            <ul>
-            {this.state.accomplishments.map(accomp => {
-             return <li className='accomp-list-items'> <Edit key={accomp.accomp_id} accomp={accomp.accomplishments} deleteSkills={this.deleteSkills} editSkills={this.editSkills} handleChange={this.handleChange} skills={this.state.skills}/> </li> })}
+
+         
+            <ul >
+            { accomplishments &&
+            
+            accomplishments.map(accomp => {
+             return  <li key={accomp.accomp_id} className='accomp-list-items'>
+                     <Edit accomp={accomp.accomplishments} id={accomp.accomp_id} deleteSkills={deleteSkills} editSkills={editSkills} handleChange={handleChange} skills={skills}/> </li> })}
              {/* return <ul key={accomp.id}>{accomp.skills}<button onClick={()=>this.deleteSkills(this.state.accomplishments.id)}>X</button><button onClick={(e)=>this.handleEdit(e)}>Edit</button></ul> })} */}</ul>
+            
             
              </Box>
              </Container>
@@ -126,6 +127,6 @@ render(){
         </>
     )
 }
-}
+
 
 export default Accomplishments

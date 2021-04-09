@@ -31,11 +31,20 @@ module.exports = {
     },
 
     editSkills: async (req, res)=>{
-        const {accomp_id} = req.params
-        // const {user_id} = req.session.user
-        const {skills} = req.body
-        const db = req.app.get('db')
-        const editskills = await db.skills.edit_skills([skills, accomp_id])
+        try{
+
+            const {id} = req.params
+            const {skills} = req.body
+            const {user_id} = req.session.user
+            const db = req.app.get('db')
+            const editskills = await db.skills.edit_skills([skills, id])
+            const getAllSkills = await db.skills.get_skills([user_id])
+            res.status(200).send(getAllSkills)
+        }
+
+        catch(error){
+            res.status(500).send(error)
+        }
 
 
     },
@@ -43,6 +52,7 @@ module.exports = {
     deleteSkills: async (req, res)=>{
         try{
             const {id} = req.params
+            console.log(id, 'delete skills params')
             const db = req.app.get('db')
             const deleteskills = await db.skills.delete_skills([id])
             res.sendStatus(200)

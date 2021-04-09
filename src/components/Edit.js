@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Button} from '@chakra-ui/react'
+import {Button, Flex, Box} from '@chakra-ui/react'
 // import Accomplishments from './Accomplishments'
 // import axios from 'axios'
 
@@ -23,7 +23,7 @@ handleEditChange=(e)=>{
 }
 
 render(){
-    const {accomp, deleteSkills, editSkills, skills} = this.props
+    const {accomp, id, deleteSkills, editSkills, skills} = this.props
     
 return(
 
@@ -41,7 +41,7 @@ return(
                             size='xs'
                             variant='outline'
                             onClick={()=>{
-                                            editSkills(accomp.id, this.state.userInput)
+                                            editSkills(id, this.state.userInput)
                                             this.setState({editing: false})
                                         }}>
                 Save</Button>
@@ -52,9 +52,14 @@ return(
     (
         <li className="accompListEditXbtns">
               {accomp}
-             
-             <Button size="xs" variant="ghost" className="editXbtn" onClick={()=>deleteSkills(accomp.id)}>X</Button>
-             <Button size="xs" variant='ghost' className="editbtn" onClick={(e)=>this.toggleEditMode(e)}>Edit</Button>
+            <Flex >
+                 <Box alignItems='flex-end'>
+    
+                    <Button size="xs" variant='ghost' className="editbtn" onClick={(e)=>this.toggleEditMode(e)}>Edit</Button>
+                    <Button size="xs" variant="ghost" className="editXbtn" onClick={()=>deleteSkills(id)}>X</Button>
+                 
+                </Box>
+             </Flex>
         </li>
     )}
     </>

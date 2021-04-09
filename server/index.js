@@ -46,7 +46,7 @@ app.post(`/logout`, authCTRL.logout)
 app.get(`/getskills`, skillsCTRL.getSkills)
 app.post(`/addskills`, skillsCTRL.addSkills)
 app.put(`/editskills/:id`, skillsCTRL.editSkills)
-app.delete(`/deleteskills`, skillsCTRL.deleteSkills)
+app.delete(`/deleteskills/:id`, skillsCTRL.deleteSkills)
 
 // app.get('/api/careerSkills', ctrl.getSkills) //test in postman was successful!!
 // app.post('/api/careerSkills', ctrl.addSkills) //test in postman successful
