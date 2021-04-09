@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 authCTRL = require('./authController')
 skillsCTRL = require('./skillsController')
+goalCTRL = require('./goalController')
 const massive = require('massive')
 const session = require('express-session')
 const app = express()
@@ -58,6 +59,13 @@ app.get('/api/jobListing', ctrl.getJobListing)
 app.post('/api/myRole', ctrl.getMyRole)
 app.get('/api/home')
 
+
+//Goals endpoints
+
+app.get(`/getgoals`, goalCTRL.getGoals)
+app.post(`/addgoal`, goalCTRL.addGoal)
+app.put(`/editgoal`, goalCTRL.editGoal)
+app.delete(`/deletegoal`, goalCTRL.deleteGoal)
 
 
 

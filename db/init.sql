@@ -1,6 +1,7 @@
 DROP TABLE if exists careerAcc;
 DROP TABLE if exists users;
-
+DROP TABLE if exists comments;
+DROP TABLE if exists goals;
 
 CREATE TABLE users (
 
@@ -17,8 +18,24 @@ accomplishments VARCHAR(2000),
 user_id INT REFERENCES users(user_id));
 
 
+CREATE TABLE goals (
+
+goal_id SERIAL PRIMARY KEY,
+goal VARCHAR(2000),
+start_date date,
+end_date date,
+user_id INT REFERENCES users(user_id));
+
+CREATE TABLE comments(
+comment_id SERIAL PRIMARY KEY,
+comment varchar(2000),
+date date,
+goal_id INT REFERENCES goals(goal_id));
+
 
 SELECT * from careerAcc;
 SELECT * from users;
+SELECT * from goals;
+SELECT * from comments;
 
 

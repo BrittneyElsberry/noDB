@@ -1,0 +1,1 @@
+SELECT * from goals where user_id = $1;

@@ -26,9 +26,10 @@ return <Flex className="headerContainer">
                 <Spacer/>
 
                     <Box className='nav-btns'>
-                        <Button size="sm" ml='2'>
+                        
+                       <Link to='/goals'> <Button size="sm" ml='2'>
                             Goals
-                        </Button>
+                        </Button></Link>
                        
                         <Button size="sm"  ml='2'>
                             Profile
