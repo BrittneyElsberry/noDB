@@ -5,7 +5,7 @@ import {Switch, Route} from 'react-router-dom'
 import Auth from './components/Auth/Auth'
 import JobListing from './components/JobListing'
 import Main from './components/Main'
-import Goals from './components/Goals'
+import Goals from './components/Goals/Goals'
 
 
 function App() {

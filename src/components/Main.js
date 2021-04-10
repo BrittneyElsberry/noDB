@@ -3,7 +3,7 @@ import axios from 'axios'
 import Header from './Header'
 import Accomplishments from './Accomplishments'
 import JobListing from './JobListing'
-import Goals from './/Goals'
+
 
 class Main extends Component {
 constructor(){

@@ -249,6 +249,22 @@ font-size: 1.0rem;
   list-style: none;
 }
 
+.date{
+  font-size: 0.65rem;
+}
+
+.goalContainer{
+  border: 2px solid blue;
+  padding: 6%;
+  margin-top: 4%;
+  width: 100%;
+ 
+}
+
+.commentList{
+  font-size: 0.5rem;
+}
+
 /*
 Color Palette:
 

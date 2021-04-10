@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {Button, Flex, Box} from '@chakra-ui/react'
+import {MdDelete} from 'react-icons/md'
+import {AiFillEdit} from 'react-icons/ai'
 // import Accomplishments from './Accomplishments'
 // import axios from 'axios'
 
@@ -55,8 +57,8 @@ return(
             <Flex >
                  <Box alignItems='flex-end'>
     
-                    <Button size="xs" variant='ghost' className="editbtn" onClick={(e)=>this.toggleEditMode(e)}>Edit</Button>
-                    <Button size="xs" variant="ghost" className="editXbtn" onClick={()=>deleteSkills(id)}>X</Button>
+                    <Button size="xs" variant='ghost' className="editbtn" onClick={(e)=>this.toggleEditMode(e)}><AiFillEdit/></Button>
+                    <Button size="xs" variant="ghost" className="editXbtn" onClick={()=>deleteSkills(id)}><MdDelete/> </Button>
                  
                 </Box>
              </Flex>

@@ -3,6 +3,7 @@ const express = require('express')
 authCTRL = require('./authController')
 skillsCTRL = require('./skillsController')
 goalCTRL = require('./goalController')
+commentCTRL = require('./commentController')
 const massive = require('massive')
 const session = require('express-session')
 const app = express()
@@ -67,6 +68,10 @@ app.post(`/addgoal`, goalCTRL.addGoal)
 app.put(`/editgoal`, goalCTRL.editGoal)
 app.delete(`/deletegoal`, goalCTRL.deleteGoal)
 
+//Comments endpoints
 
 
-
+app.get(`/getcomments`, commentCTRL.getComments)
+app.post(`/addcomment/:id`, commentCTRL.addComment)
+app.put(`/editcomment`, commentCTRL.editComment)
+app.delete(`/deletecomment`, commentCTRL.deleteComment)

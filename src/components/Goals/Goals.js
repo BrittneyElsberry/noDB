@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react'
-import {Box, Flex, Button, Input, Form, FormControl} from '@chakra-ui/react'
+import {Box, Flex, Button, Input, Form, FormControl, FormLabel, Container, Spacer} from '@chakra-ui/react'
 import axios from 'axios'
+import Moment from 'react-moment'
+import Comments from './Comments'
 
 const Goals =()=>{
 
@@ -8,9 +10,20 @@ const Goals =()=>{
 const [goal, setGoal] = useState('')
 const [startDate, setStartDate] =useState('')
 const [endDate, setEndDate] = useState('')
-const [comment, setComment] = useState('')
-const [allComments, setAllComments] = useState([])
 const [allGoals, setAllGoals] = useState([])
+
+
+useEffect(()=>{
+getGoals()
+
+},[])
+
+const getGoals = ()=>{
+    axios.get(`/getgoals`)
+    .then(res=> {
+        setAllGoals(res.data)
+    })
+}
 
 
 const submitGoal = (formSubmit)=>{
@@ -29,11 +42,11 @@ const submitGoal = (formSubmit)=>{
 
     return(
     
-     <Flex>
-         
-        <Box padding='10'  bg='gray.100' h='100vh' w='40vw'>
+     <Flex direction='column'>
+         <Container maxW='md' width='100%' height='50vh'>
+        <Box padding='10'  bg='gray.100' d='flex'>
             
-            <form onSubmit={submitGoal}>
+            <form method="POST" onSubmit={submitGoal}>
                 
                 <h1 className="goalsHeader">Goals</h1>
                 <FormControl>
@@ -73,18 +86,30 @@ const submitGoal = (formSubmit)=>{
 
             </Box>
                 <FormControl>
-                <Button size='xs' className="goalsSubmitbtn">Submit</Button>
+                <Button size='xs' type='submit' className="goalsSubmitbtn">Submit</Button>
                 </FormControl>
                 
             </form>
         </Box>
 
         <Box className='goalList'>
-            <ul>
 
-        {   
+
+        </Box>
+        </Container>
+
+        <Container maxW='md' width='100%' height='50vh'>
+        <Box padding='10'  bg='gray.100' d='flex' >
+            <ul >
+
+        {   allGoals &&
             allGoals.map((goal)=>{
-                return <li key={goal.goal_id}>{goal.goals}</li>
+                return <li className='goalContainer' key={goal.goal_id}>{goal.goal} 
+                <Spacer/>
+                <p className='date'> Start Date <Moment format='MM/DD/YYYY'>{goal.start_date}</Moment></p>
+                <p className='date'>Goal Completion <Moment format='MM/DD/YYYY'>{goal.end_date}</Moment></p> 
+                <Comments goal_id={goal.goal_id} />
+                </li>
             })
         }
 
@@ -92,6 +117,11 @@ const submitGoal = (formSubmit)=>{
 
 
         </Box>
+
+        </Container>
+
+
+
     </Flex>   
     
     )

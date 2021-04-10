@@ -30,7 +30,8 @@ CREATE TABLE comments(
 comment_id SERIAL PRIMARY KEY,
 comment varchar(2000),
 date date,
-goal_id INT REFERENCES goals(goal_id));
+goal_id INT REFERENCES goals(goal_id),
+user_id INT REFERENCES users(user_id));
 
 
 SELECT * from careerAcc;
