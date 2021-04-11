@@ -73,5 +73,5 @@ app.delete(`/deletegoal`, goalCTRL.deleteGoal)
 
 app.get(`/getcomments`, commentCTRL.getComments)
 app.post(`/addcomment/:id`, commentCTRL.addComment)
-app.put(`/editcomment`, commentCTRL.editComment)
-app.delete(`/deletecomment`, commentCTRL.deleteComment)
+app.put(`/editcomment/:id`, commentCTRL.editComment)
+app.delete(`/deletecomment/:id`, commentCTRL.deleteComment)

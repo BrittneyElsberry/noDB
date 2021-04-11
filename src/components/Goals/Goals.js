@@ -11,6 +11,7 @@ const [goal, setGoal] = useState('')
 const [startDate, setStartDate] =useState('')
 const [endDate, setEndDate] = useState('')
 const [allGoals, setAllGoals] = useState([])
+const [index, setIndex] = useState(0)
 
 
 useEffect(()=>{
@@ -39,10 +40,22 @@ const submitGoal = (formSubmit)=>{
 
 }
 
+    const goalsIndexNext = ()=>{
+
+
+    }
+
+    const goalsIndexPrevious = ()=>{
+
+    }
+
+    console.log(allGoals, 'empty')
+
 
     return(
     
-     <Flex direction='column'>
+     <Flex direction='row'>
+       
          <Container maxW='md' width='100%' height='50vh'>
         <Box padding='10'  bg='gray.100' d='flex'>
             
@@ -98,28 +111,77 @@ const submitGoal = (formSubmit)=>{
         </Box>
         </Container>
 
-        <Container maxW='md' width='100%' height='50vh'>
-        <Box padding='10'  bg='gray.100' d='flex' >
-            <ul >
+                <Container maxW='md' width='100%' height='80vh' d='flex' direction='column'>
+                <Box padding='1'  bg='gray.100' d='flex' direction='column'>
 
-        {   allGoals &&
-            allGoals.map((goal)=>{
-                return <li className='goalContainer' key={goal.goal_id}>{goal.goal} 
-                <Spacer/>
-                <p className='date'> Start Date <Moment format='MM/DD/YYYY'>{goal.start_date}</Moment></p>
-                <p className='date'>Goal Completion <Moment format='MM/DD/YYYY'>{goal.end_date}</Moment></p> 
-                <Comments goal_id={goal.goal_id} />
-                </li>
-            })
-        }
+                    {/* <ul > */}
 
-            </ul>
+                        {/* {
+                            allGoals &&
+                        <p>{ allGoals[index]} </p> 
+                            
+                        } */}
+        {/* 
+                {   allGoals &&
+                    allGoals.map((goal)=>{
+                        return <li className='goalContainer'  key={goal.goal_id}>{goal.goal[0]} 
+                        
+                        <p className='date'> Start Date  <Moment format='MM/DD/YYYY'>{goal.start_date}</Moment></p>
+                        <p className='date'>Goal Completion <Moment format='MM/DD/YYYY'>{goal.end_date}</Moment></p> 
+                        <br></br>
+                        <br></br>
+                        <Comments goal_id={goal.goal_id} />
+                        </li>
+                        
+                    })
+                } */}
+
+                    {/* </ul> */}
+
+                    <Container className='display-Goals' p={'10'}>
+
+                    {allGoals && index < allGoals.length && <h1>{allGoals[index].goal}</h1>}
 
 
-        </Box>
+                
+                    <div>{allGoals && index < allGoals.length && <p className='date'> Start Date  <Moment format='MM/DD/YYYY'>{allGoals[index].start_date}</Moment></p>}</div>
+                    <div>{ allGoals && index < allGoals.length && <p className='date'> Goal Completion <Moment format='MM/DD/YYYY'>{allGoals[index].end_date}</Moment></p> }</div>
+                    <div>{ <Comments goal_id={goal.goal_id} />}</div>
+            
+                    
+                                
+                                <Box bg='blue'className='prev-next-buttons' p={10} >
+                                <Button size='xs'
+                                        onClick={()=>{
+                                            if(index > 0 ){
+                                                setIndex(index-1)
+                                            }
+                                        }}
+                                        
+                                        
+                                        >Previous
+                                </Button>
 
-        </Container>
+                                
+                                <Button size='xs'
+                                        onClick={()=>{
+                                            
+                                            if(index < allGoals.length){
+                                                setIndex(index+1)
+                                                
+                                            } else if (index === allGoals.length){
+                                                setIndex(0)
+                                            }
+                                        }
+                                    }
+                                    >Next
+                                </Button>
 
+                                </Box>
+            
+                                    </Container>
+                            </Box>
+                </Container>
 
 
     </Flex>   

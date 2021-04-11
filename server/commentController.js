@@ -37,8 +37,13 @@ module.exports ={
 
     editComment: async (req, res)=> {
         try{
-
+            const {id} = req.params
+            const {comment} = req.body
+            const {user_id} = req.session.user
             const db = req.app.get('db')
+            const editC = await db.comments.edit_comment([comment, id])
+            const getAllComments = await db.comments.get_comments([user_id])
+            res.status(200).send(getAllComments)
         }
         catch(error){
             res.status(500).send(error)
@@ -49,6 +54,9 @@ module.exports ={
         try{
 
             const db = req.app.get('db')
+            const {comment_id} = req.params
+            const dlte = await db.comments.delete_comment([comment_id])
+            res.sendStatus(200)
         }
         catch(error){
             res.status(500).send(error)
