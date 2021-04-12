@@ -21,54 +21,47 @@ import {Stack,
 const JobListing = (props)=> {
 console.log(props)
 
+const [job, setJobs] = useState([])
 
 
-const options = {
-  method: 'GET',
-  url: 'https://job-listings.p.rapidapi.com/api/job/listing/',
-  params: {url: 'https://www.indeed.com/q-data-scientist-l-silicon-valley-jobs.html'},
-  headers: {
-    'x-rapidapi-key': '8dd8bd2453msh1f14a9f4a3fff44p168554jsn062608cb284f',
-    'x-rapidapi-host': 'job-listings.p.rapidapi.com'
-  }
-};
+
+//----REMOTIVE API ---- CORS error 
+
+//(`https://remotive.io/api/remote-jobs`) 
 
 
 // useEffect(()=>{
+//   axios.get(`https://remotive.io/api/remote-jobs?category=software-dev`) 
+//   .then(res=>{
+//     console.log(res.data,'useEffect Jobs data')
+//     setJobs(res.data)
+    
+//   }).catch(err=> console.log(err))
+  
 
-//     axios.request(options)
-//     .then((response)=> {
-//         console.log(response.data, 'job listing API responses');
-//     }).catch((error)=> {
-//         console.error(error);
-//     });
-
-
-// }, [])
+// },[])
 
 
   
     return (
         <div>
-            <Container maxW='sm' height='100%'>
-            <Box padding='5' bg='gray.100'>
+            <Container maxW='md' height='100%'>
+            <Box padding='5' bg='gray.100' overflowY='scroll' height='80vh'>
 
             <h1 className="jlheader ">Job Listing</h1>
             <br></br>
-            <p className="descrip">Company: </p> {props.jobListing.company}
+            <p className="descrip">Company: </p> <p className='descrip'>{props.jobListing.company}</p> 
             <br></br>
+           
+            <p className="descrip">Job Title:</p> <p className="jobContent">{props.jobListing.jobtitle}</p>
             <br></br>
-            <p className="descrip">Job Title:</p> <span className="jobContent">{props.jobListing.jobtitle}</span>
+            <p className="descrip" >About: </p> <p className="jobContent"> {props.jobListing.about}</p>
             <br></br>
+            <p className="descrip">Responsibilities: </p> <p className='jobContent'>{props.jobListing.responsibilities}</p>
             <br></br>
-            <p className="descrip" >About: </p> <span className="jobContent"> <br></br>{props.jobListing.about}</span>
-            <br></br>
-            <br></br>
-            <p className="descrip">Responsibilities: </p><br></br> <span className='jobContent'>{props.jobListing.responsibilities}</span>
-            <br></br>
-            <br></br>
+            
             <p className="descrip"> Skill Requirements:</p> 
-            <br></br>
+           
 
             {props.jobListing.skillrequirements ? (
                          <ul className='jobContent'><li>{props.jobListing.skillrequirements[0]}</li>
@@ -84,7 +77,7 @@ const options = {
     
             <br></br>
             <p className="descrip">Technical Knowledge Requirements: </p>
-            <br></br>
+           
             {props.jobListing.technicalknowledgerequirements ? (
 
             <ul className='jobContent'><li>{props.jobListing.technicalknowledgerequirements[0]}</li>

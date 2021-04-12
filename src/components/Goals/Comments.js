@@ -12,6 +12,8 @@ const Comments = (props)=>{
     const [comment, setComment] = useState('')
     const [allComments, setAllComments] = useState([])
     const [editing, setEditing] = useState(false)
+ 
+    const {index, allGoals, setIndex, goal_id} = props
 
     useEffect(()=>{
         getComments()
@@ -60,33 +62,113 @@ const getComments = ()=>{
      .catch(error=> console.log(error))
  }
 
- console.log(props.goal_id, 'props or not props')
- console.log(comment, 'comment in state')
+ console.log(goal_id, 'props or not props')
+ console.log(allComments, 'AllComments object')
+
+ const filterComments = () =>{
+     allComments.forEach(el =>{
+        if(el.goal_id === goal_id){
+            return el
+        }
+        console.log('returning el')
+
+     })
+    
+ }
+
+
+ console.log(goal_id, 'goal_id')
     return (
         <>
         <Flex>
             <Container >
 
-            {allComments && 
+          
+
+            {/* {allComments && 
                 allComments.map(allC=>{
-                    return <li key={allC.comment_id} className='commentList'>
+                        return <li key={allC.comment_id} className='commentList'>
                          <EditComments editComment={editComment}  handleEdit={handleEdit} editing={editing} />
+
+                                                    
+                                                                    
                         
-                                                                {allC.comment} 
                                                                     <Box>
-                                                                    <Moment format='MM/DD/YYYY'>{allC.date}</Moment> 
+                                                                    <Moment format='MM/DD/YYYY'>{allC.goal_id.date}</Moment> 
                                                                     <Button size='xs'
-                                                                            onClick={()=>editComment(allC.comment_id, props.goal_id)}
+                                                                            onClick={()=>editComment(allC.comment_id, goal_id)}
                                                                     ><AiFillEdit/></Button>
                                                                     <Button  size='xs'
-                                                                             onClick={()=>deleteComment(allC.comment_id, props.goal_id)}   
+                                                                             onClick={()=>deleteComment(allC.comment_id, goal_id)}   
                                                                     ><MdDelete/></Button> 
                                                                     </Box>
                            
 
                             </li>
                 })
-            }
+            } */}
+
+        
+
+
+            {/* {
+                    allComments && allComments.map(allC => {
+                    console.log(allC.goal_id, goal_id)
+                    console.log('what the hell')
+                    return allC.goal_id === goal_id ? 
+                    <li>{allC.comment}
+                    <Box>
+                                                                    <Moment format='MM/DD/YYYY'>{allC.goal_id.date}</Moment> 
+                                                                    <Button size='xs'
+                                                                            onClick={()=>editComment(allC.comment_id, goal_id)}
+                                                                    ><AiFillEdit/></Button>
+                                                                    <Button  size='xs'
+                                                                             onClick={()=>deleteComment(allC.comment_id, goal_id)}   
+                                                                    ><MdDelete/></Button> 
+                                                                    </Box>
+                                                                    </li> 
+                                                                    
+                                                                    : null
+                })
+            } */}
+
+
+
+
+{allComments && 
+                
+                allComments.filter(c=> {
+                    console.log(c.goal_id, goal_id)
+
+                    return c.goal_id === goal_id}).map(allC=>{
+                    
+
+                    if(allC.goal_id === goal_id){
+                    
+                    return <li key={allC.comment_id} className='commentList'>
+                            {allC.comment}
+                        <EditComments editComment={editComment}  handleEdit={handleEdit} editing={editing} />
+                                                                    
+                        
+                                                                    <Box>
+                                                                    <Moment format='MM/DD/YYYY'>{allC.goal_id.date}</Moment> 
+                                                                    <Button size='xs'
+                                                                            onClick={()=>editComment(allC.comment_id, goal_id)}
+                                                                    ><AiFillEdit/></Button>
+                                                                    <Button  size='xs'
+                                                                             onClick={()=>deleteComment(allC.comment_id, goal_id)}   
+                                                                    ><MdDelete/></Button> 
+                                                                    </Box>
+                           
+
+                            </li> } 
+                            
+                    })
+                    
+                    
+}
+
+
                     <Box className='commentBox' padding={2}>
                     <Input  
                             placeholder='comment on your progress'
@@ -96,9 +178,41 @@ const getComments = ()=>{
                             onChange={(e)=>setComment(e.target.value)}  
                     />
                     <Button size='xs' 
-                            onClick={()=>submitComment(props.goal_id, comment)}
+                            onClick={()=>submitComment(goal_id, comment)}
                     >Save</Button>
                     </Box>
+
+                    <Box className='prev-next-buttons' p={10} >
+                                <Button size='xs'
+                                        onClick={()=>{
+                                            if(index > 0 ){
+                                                setIndex(index-1)
+                                            }
+                                        }}
+                                        
+                                        
+                                        >Previous
+                                </Button>
+
+                                
+                                <Button size='xs'
+                                        onClick={()=>{
+                                            
+                                            if(index < allGoals.length){
+                                                setIndex(index+1)
+                                                
+                                            } else if (index === allGoals.length){
+                                                setIndex(0)
+                                            }
+                                        }
+                                    }
+                                    >Next
+                                </Button>
+
+                                </Box>
+
+
+
 
             </Container>
 

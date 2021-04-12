@@ -33,10 +33,16 @@ date date,
 goal_id INT REFERENCES goals(goal_id),
 user_id INT REFERENCES users(user_id));
 
+CREATE TABLE my_role (
+SERIAL PRIMARY KEY role_id,
+my_role varchar(100),
+user_id INT REFERENCES users(user_id));
+
 
 SELECT * from careerAcc;
 SELECT * from users;
 SELECT * from goals;
 SELECT * from comments;
+SELECT * from my_role;
 
 

@@ -3,6 +3,7 @@ import {Box, Flex, Button, Input, Form, FormControl, FormLabel, Container, Space
 import axios from 'axios'
 import Moment from 'react-moment'
 import Comments from './Comments'
+import Header from '../Header'
 
 const Goals =()=>{
 
@@ -53,8 +54,9 @@ const submitGoal = (formSubmit)=>{
 
 
     return(
-    
-     <Flex direction='row'>
+    <>
+         <Header/>
+        <Flex direction='row'>
        
          <Container maxW='md' width='100%' height='50vh'>
         <Box padding='10'  bg='gray.100' d='flex'>
@@ -146,11 +148,11 @@ const submitGoal = (formSubmit)=>{
                 
                     <div>{allGoals && index < allGoals.length && <p className='date'> Start Date  <Moment format='MM/DD/YYYY'>{allGoals[index].start_date}</Moment></p>}</div>
                     <div>{ allGoals && index < allGoals.length && <p className='date'> Goal Completion <Moment format='MM/DD/YYYY'>{allGoals[index].end_date}</Moment></p> }</div>
-                    <div>{ <Comments goal_id={goal.goal_id} />}</div>
+                    <div>{ allGoals && index < allGoals.length && <Comments goal_id={allGoals[index].goal_id} index={index} setIndex={setIndex} allGoals={allGoals} />}</div>
             
                     
                                 
-                                <Box bg='blue'className='prev-next-buttons' p={10} >
+                                {/* <Box bg='blue'className='prev-next-buttons' p={10} >
                                 <Button size='xs'
                                         onClick={()=>{
                                             if(index > 0 ){
@@ -177,7 +179,7 @@ const submitGoal = (formSubmit)=>{
                                     >Next
                                 </Button>
 
-                                </Box>
+                                </Box> */}
             
                                     </Container>
                             </Box>
@@ -185,7 +187,7 @@ const submitGoal = (formSubmit)=>{
 
 
     </Flex>   
-    
+    </>
     )
 }
 

@@ -1,0 +1,1 @@
+DELETE from my_role where user_id = $1;

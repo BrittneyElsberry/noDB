@@ -12,7 +12,7 @@ const Header = (props)=>{
 
 
 return <Flex className="headerContainer">
-            <Box className="flexHeader">
+            {/* <Box className="flexHeader">
                 <Heading id="roleHeader" w='100%'>My Next Role </Heading> 
               
                 <Box id='inputandsave'>
@@ -22,10 +22,14 @@ return <Flex className="headerContainer">
                 </Box>
                 
                 <h1 id="jobTitleDisplayed">{props.savedRole}</h1>
-                </Box>
+                </Box> */}
                 <Spacer/>
 
                     <Box className='nav-btns'>
+
+                    <Link to='/home'> <Button size="sm" ml='2'>
+                            Home
+                        </Button></Link>
                         
                        <Link to='/goals'> <Button size="sm" ml='2'>
                             Goals

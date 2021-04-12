@@ -93,25 +93,25 @@ const [editing, setEditing] = useState(false)
                 
 
         <> 
-
-        <Container maxW='lg' centerContent width='100%'>
-        <Box padding='5' bg='gray.100'>
+       
+        <Container >
+        <Box padding='5' bg='gray.100' overflowY='scroll' height='80vh' width='40vw' className='accomp-box'>
 
             
             <h1 className="accompHeader">Career Accomplishments</h1>
-           
+           <br></br>
             
             <Input  size='xs'
                     isRequired 
                     type="text" 
                     value={skills}
                    onChange={(e)=>handleChange(e.target.value)}/>
-           
-            <Button variant='solid' colorScheme='teal' size='xs' onClick={()=>addSkills(skills)}>Submit</Button>
+       
+            <Button variant='solid' colorScheme='teal' size='xs' p={2} onClick={()=>addSkills(skills)}>Submit</Button>
           
 
          
-            <ul >
+            <ul className='listBox' >
             { accomplishments &&
             
             accomplishments.map(accomp => {

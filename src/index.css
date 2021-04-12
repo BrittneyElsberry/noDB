@@ -32,11 +32,14 @@ code {
 }
 
 .mainContainer{
-  display: flex;
-  box-sizing: border-box;
-  flex-shrink: 2;
-  height: 500vh;
-  text-align: left;
+
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-around !important;
+  /* box-sizing: border-box; */
+  /* flex-shrink: 2; */
+  /* height: 500vh; */
+  /* text-align: left; */
   /* padding-left: 32px; */
   /* margin-left: 16px; */
   width: 100vw;
@@ -76,10 +79,12 @@ code {
 }
 
 #jobTitleDisplayed {
-  color: #fdfffc;
+  color:teal;
   font-size: 1.0rem;
   font-weight: bold;
   margin-left: 2%;
+  width: 100%;
+  margin-top: 4%;
 
  
 
@@ -129,15 +134,27 @@ code {
 }
 
 .accomp-list-items{
-  margin-top: 5%;
+  /* margin-top: 5%; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* width: 100%; */
+  font-size: .60rem;
 
   padding: 1%;
 
-  /* background-color: blue; */
+
+ 
+}
+
+/* .accomp-box{
+  display: flex;
+  flex-direction: column;
+
+
+} */
+
+.listBox{
+  margin-top: 5%;
 }
 
 .goalsInput, .AccompInput {
@@ -202,7 +219,7 @@ background-color: #00afb9;
 }
 
 .jobContent{
-  font-size: .70rem;
+  font-size: .60rem;
 }
 /* li, .AccompList{
   list-style: circle;
@@ -236,7 +253,7 @@ background-color: #00afb9;
 
 .descrip{
 font-weight: bold;
-font-size: 1.0rem;
+font-size: .70rem;
 }
 
 .App {
@@ -293,10 +310,41 @@ font-size: 1.0rem;
 
 }
 
+.display-Goals{
+  height: 100vh;
+}
+
 .prev-next-buttons{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
+}
+
+.my-role-box{
+
+   display: flex;
+  flex-direction: row; 
+  justify-content: flex-start; 
+  height: 100%;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  width: 75%;
+
+ 
+}
+
+.my-role-flex-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  width: 60%;
+}
+
+.my-next-role{
+  color: teal;
+  /* margin-left: 10%; */
+  font-size: 0.7rem;
 }
 
 /*
