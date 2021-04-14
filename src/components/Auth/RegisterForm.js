@@ -47,10 +47,11 @@ const RegisterForm = () => {
                 <Container maxW='sm' centerContent>
                     <Box padding='10' bg='gray.100'>
                 <form onSubmit={handleSignIn}>
-                    <Stack maxWidth={600} margin='auto' spacing={5} marginTop={5}/>
-                        <FormControl>
-                            <FormLabel htmlFor='email'>Email</FormLabel>
+                    <Stack maxWidth={600}  spacing={5} marginTop={5}/>
+                        <FormControl isRequired>
+                            <FormLabel className='form-labels' htmlFor='email'>Email</FormLabel>
                             <Input  isRequired
+                                    size='xs'
                                     type='email'
                                     id='email'
                                     aria-describedby='email-helper-text' 
@@ -58,9 +59,9 @@ const RegisterForm = () => {
                                     onChange={(e)=> setEmail(e.target.value)}/>
                             <FormHelperText id='email-helper-text' >We'll never share your email</FormHelperText>
                         </FormControl>
-                        <FormControl>
-                            <FormLabel htmlFor='password'>Password</FormLabel>
-                            <Input  isRequired
+                        <FormControl isRequired>
+                            <FormLabel htmlFor='password' className='form-labels' >Password</FormLabel>
+                            <Input  size='xs'
                                     type={showPassword ? 'text' : 'password'}
                                     id='password'
                                     aria-describedby='password-helper-text' 
@@ -68,18 +69,20 @@ const RegisterForm = () => {
                                     onChange={(e)=> setPassword(e.target.value)}/>
                                   <FormHelperText id='password-helper-text' >The password you used to sign up with</FormHelperText>
                         </FormControl>
-                        <FormControl>
-                        <FormLabel htmlFor='First Name'>First Name</FormLabel>
+                        <FormControl isRequired>
+                        <FormLabel htmlFor='First Name' className='form-labels' >First Name</FormLabel>
                         <Input  isRequired
+                                 size='xs'
                                 type={firstName}
                                 id='firstName'
                                 value={firstName}
                                 onChange={(e)=> setFirstName(e.target.value)}/>
                            
                     </FormControl>
-                    <FormControl>
-                        <FormLabel htmlFor='Last Name'>Last Name</FormLabel>
+                    <FormControl isRequired>
+                        <FormLabel htmlFor='Last Name' className='form-labels' mt='2' >Last Name</FormLabel>
                         <Input  isRequired
+                                 size='xs'
                                 type={lastName}
                                 id='lastName'
                                 value={lastName}
@@ -87,7 +90,7 @@ const RegisterForm = () => {
                            
                     </FormControl>
                     <FormControl>
-                    <Button colorScheme='teal' type='submit' disabled={isInvalid} variant='outline' >Register</Button>
+                    <Button colorScheme='teal' type='submit' disabled={isInvalid} variant='outline' mt='2' size='sm' >Register</Button>
                     </FormControl>
 
                 </form>  

@@ -77,13 +77,17 @@ return(
 
 <>
 
+
+
+
+
       <Header myNextRole={this.state.myNextRole} displayRole={this.displayRole} 
               handleRoleChange={this.handleRoleChange} postMyRole={this.postmyRole} 
               savedRole={this.state.savedRole}/>
-  <Box className='my-role-flex-box'>
-      <Box className='my-role-box' >
+          <Box className='my-role-flex-box'>
+              <Box className='my-role-box' >
                 <Heading  className='my-next-role' size='md'>My Next Role </Heading> 
-              <br></br>
+                  <br></br>
                 <Box id='inputandsave'>
                 <Input size='xs' 
                       className='my-next-role-input' 
@@ -94,6 +98,12 @@ return(
                 </Box>
                 
                 </Box>
+
+
+
+
+
+
 
               { this.state.savedRole[0] && (
 

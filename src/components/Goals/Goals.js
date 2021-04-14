@@ -58,8 +58,8 @@ const submitGoal = (formSubmit)=>{
          <Header/>
         <Flex direction='row'>
        
-         <Container maxW='md' width='100%' height='50vh'>
-        <Box padding='10'  bg='gray.100' d='flex'>
+         <Container maxW='md' width='100%'>
+        <Box padding='10'  bg='gray.100' d='flex' height='80vh'>
             
             <form method="POST" onSubmit={submitGoal}>
                 
