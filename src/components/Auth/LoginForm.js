@@ -1,19 +1,15 @@
 import {useState} from 'react'
 import {Stack, 
     Button, 
-    ButtonGroup,
     FormControl, 
     FormLabel, 
+    FormHelperText,
     Input, 
-    InputGroup, 
-    InputRightElement,
-    FormHelperText, 
     Container,
-    Box,
-    Heading} from '@chakra-ui/react'
+    Box} from '@chakra-ui/react'
     import ErrorMessage from './ErrorMessage'
     import axios from 'axios'
-    import {useHistory, Link} from 'react-router-dom'
+    import {useHistory} from 'react-router-dom'
 
 export default function LoginForm (){
 

@@ -1,19 +1,10 @@
-import React, {Component, useState, useEffect} from 'react'
-import Main from './Main'
-import axios from "axios";
-import {Stack, 
-    Button, 
-    ButtonGroup,
-    FormControl, 
-    FormLabel, 
-    Input, 
-    InputGroup, 
-    InputRightElement,
-    FormHelperText, 
+// import {useState} from 'react'
+// import Main from './Main'
+// import axios from "axios";
+import {
     Container,
     Box,
-    Heading,
-    Flex} from '@chakra-ui/react'
+    } from '@chakra-ui/react'
 
 
 
@@ -21,7 +12,7 @@ import {Stack,
 const JobListing = (props)=> {
 console.log(props)
 
-const [job, setJobs] = useState([])
+// const [job, setJobs] = useState([])
 
 
 

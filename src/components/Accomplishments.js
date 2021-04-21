@@ -1,21 +1,12 @@
-import React, {Component, useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 // import Main from './Main'
 import axios from 'axios'
 import Edit from './Edit'
-import {Stack, 
+import {
     Button, 
-    ButtonGroup,
-    FormControl, 
-    FormLabel, 
     Input, 
-    InputGroup, 
-    InputRightElement,
-    FormHelperText, 
     Container,
-    Box,
-    Heading,
-    Flex,
-    Spacer} from '@chakra-ui/react'
+    Box} from '@chakra-ui/react'
 // import { getSkills } from '../../server/skillsController'
 
 

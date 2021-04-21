@@ -1,4 +1,4 @@
-import {Button, ButtonGroup, Spacer, Flex, Box, Input, Heading} from '@chakra-ui/react'
+import {Button, Spacer, Flex, Box} from '@chakra-ui/react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 
@@ -39,7 +39,7 @@ return <Flex className="headerContainer">
                             Profile
                         </Button>
                      
-                       <Link to='/'><Button size="sm"  ml='2'>
+                       <Link to='/'><Button size="sm"  ml='2' onClick={logout}>
                             Logout
                         </Button></Link> 
                        

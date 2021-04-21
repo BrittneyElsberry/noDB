@@ -79,12 +79,15 @@ code {
 }
 
 #jobTitleDisplayed {
+  /* display: flex;
+  flex-direction: row; */
   color:teal;
   font-size: 1.0rem;
   font-weight: bold;
-  margin-left: 2%;
-  width: 100%;
-  margin-top: 4%;
+  margin-left: 150%;
+  width: 20vw;
+  margin-top: 12%;
+  background-color: #dd6e42;
 
  
 
@@ -271,6 +274,7 @@ font-size: .70rem;
   font-size: 0.5rem;
   display: flex;
   justify-content: flex-start;
+  margin-right: 10px;
 }
 
 .goalContainer{

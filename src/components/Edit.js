@@ -25,7 +25,7 @@ handleEditChange=(e)=>{
 }
 
 render(){
-    const {accomp, id, deleteSkills, editSkills, skills} = this.props
+    const {accomp, id, deleteSkills, editSkills} = this.props
     
 return(
 

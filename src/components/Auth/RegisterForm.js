@@ -1,18 +1,14 @@
 import {useState} from 'react'
 import {Stack, 
         Button, 
-        ButtonGroup,
         FormControl, 
         FormLabel, 
         Input, 
-        InputGroup, 
-        InputRightElement,
         FormHelperText, 
         Container,
-        Box,
-        Heading} from '@chakra-ui/react'
+        Box} from '@chakra-ui/react'
 import axios from 'axios'
-import {Link, useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 
 const RegisterForm = () => {

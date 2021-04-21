@@ -1,11 +1,16 @@
-import Comments from './Comments'
-import {useState, useEffect} from 'react'
+// import Comments from './Comments'
+
+import axios from 'axios'
+import {useState} from 'react'
 import {Input, Button} from '@chakra-ui/react'
 
 const EditComments = (props)=>{
 
     const [newComment, setNewComment] = useState('')
     const {editing, editComment} = props
+
+    
+
 
 return (
 

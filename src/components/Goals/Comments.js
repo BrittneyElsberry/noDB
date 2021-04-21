@@ -1,4 +1,4 @@
-import Goals from './Goals'
+// import Goals from './Goals'
 import {useState, useEffect} from 'react'
 import {Box, Flex, Container, Input, Button} from '@chakra-ui/react'
 import axios from 'axios'
@@ -58,23 +58,14 @@ const getComments = ()=>{
 
  const deleteComment = (id)=>{
      axios.delete(`/deletecomment/${id}`)
-     .then(_=> console.log('deleted'))
+     .then(_=> getComments())
      .catch(error=> console.log(error))
  }
 
  console.log(goal_id, 'props or not props')
  console.log(allComments, 'AllComments object')
 
- const filterComments = () =>{
-     allComments.forEach(el =>{
-        if(el.goal_id === goal_id){
-            return el
-        }
-        console.log('returning el')
 
-     })
-    
- }
 
 
  console.log(goal_id, 'goal_id')
@@ -85,52 +76,7 @@ const getComments = ()=>{
 
           
 
-            {/* {allComments && 
-                allComments.map(allC=>{
-                        return <li key={allC.comment_id} className='commentList'>
-                         <EditComments editComment={editComment}  handleEdit={handleEdit} editing={editing} />
-
-                                                    
-                                                                    
-                        
-                                                                    <Box>
-                                                                    <Moment format='MM/DD/YYYY'>{allC.goal_id.date}</Moment> 
-                                                                    <Button size='xs'
-                                                                            onClick={()=>editComment(allC.comment_id, goal_id)}
-                                                                    ><AiFillEdit/></Button>
-                                                                    <Button  size='xs'
-                                                                             onClick={()=>deleteComment(allC.comment_id, goal_id)}   
-                                                                    ><MdDelete/></Button> 
-                                                                    </Box>
-                           
-
-                            </li>
-                })
-            } */}
-
-        
-
-
-            {/* {
-                    allComments && allComments.map(allC => {
-                    console.log(allC.goal_id, goal_id)
-                    console.log('what the hell')
-                    return allC.goal_id === goal_id ? 
-                    <li>{allC.comment}
-                    <Box>
-                                                                    <Moment format='MM/DD/YYYY'>{allC.goal_id.date}</Moment> 
-                                                                    <Button size='xs'
-                                                                            onClick={()=>editComment(allC.comment_id, goal_id)}
-                                                                    ><AiFillEdit/></Button>
-                                                                    <Button  size='xs'
-                                                                             onClick={()=>deleteComment(allC.comment_id, goal_id)}   
-                                                                    ><MdDelete/></Button> 
-                                                                    </Box>
-                                                                    </li> 
-                                                                    
-                                                                    : null
-                })
-            } */}
+          
 
 
 
@@ -154,7 +100,10 @@ const getComments = ()=>{
                                                                     <Moment format='MM/DD/YYYY'>{allC.goal_id.date}</Moment> 
                                                                     <Button size='xs'
                                                                             onClick={()=>editComment(allC.comment_id, goal_id)}
-                                                                    ><AiFillEdit/></Button>
+                                                                    ><AiFillEdit/>
+                                                                    </Button>
+                                                                    
+                                                                    
                                                                     <Button  size='xs'
                                                                              onClick={()=>deleteComment(allC.comment_id, goal_id)}   
                                                                     ><MdDelete/></Button> 
