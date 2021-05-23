@@ -31,7 +31,7 @@ componentDidMount(){
 getJobListing=()=>{
   axios.get('/api/jobListing') 
   .then(res => {
-    console.log(res.data)
+    // console.log(res.data)
       this.setState({
           jobListing: res.data
       })
@@ -78,7 +78,7 @@ getJobListing=()=>{
 
 render(){
 
-console.log(this.state.savedRole, 'savedRole')
+// console.log(this.state.savedRole, 'savedRole')
 
 return(
 

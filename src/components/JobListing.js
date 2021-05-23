@@ -10,7 +10,7 @@ import {
 
 
 const JobListing = (props)=> {
-console.log(props)
+// console.log(props)
 
 // const [job, setJobs] = useState([])
 
@@ -39,7 +39,7 @@ console.log(props)
             <Container maxW='md' height='100%'>
             <Box padding='5' bg='gray.100' overflowY='scroll' height='80vh'>
 
-            <h1 className="jlheader ">Job Listing</h1>
+            <h1 className="jlheader ">Job Listing testing changes</h1>
             <br></br>
             <p className="descrip">Company: </p> <p className='descrip'>{props.jobListing.company}</p> 
             <br></br>
