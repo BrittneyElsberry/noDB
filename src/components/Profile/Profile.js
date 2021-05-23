@@ -4,7 +4,14 @@ const Profile = ()=>{
 
     return (
         <>
-        <div> I'm the profile</div>
+        <div className='profile-container'> 
+        <h1>Employment History</h1>
+        <input
+        placeholder='most recent job title'
+        ></input>
+
+
+        </div>
         
         </>
 
