@@ -11,15 +11,23 @@ import {Stack,
     import axios from 'axios'
     import {useHistory} from 'react-router-dom'
 
+
+//error when trying it this way 
+
+//variable for testing login validation
+
 export default function LoginForm (){
 
     const [email, setEmail] = useState('')
+    // const [str, setStr] = useState('')
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState('')
     const [error, setError] = useState('')
     const isInvalid = password === '' || email === ''
     const {push} = useHistory()
  
+ 
+    // const validateInput = str.includes('@');
 
     const handleSignIn = (event)=>{
         event.preventDefault()
@@ -84,3 +92,4 @@ export default function LoginForm (){
 
 }
 
+// export const validateInput = (str='') = str.includes('@');   

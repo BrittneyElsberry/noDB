@@ -78,7 +78,7 @@ const [editing, setEditing] = useState(false)
                     }
                     
                     
-                    console.log(accomplishments, 'after editing')
+                    // console.log(accomplishments, 'after editing')
             
             return(
                 

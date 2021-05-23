@@ -6,6 +6,7 @@ import Auth from './components/Auth/Auth'
 import JobListing from './components/JobListing'
 import Main from './components/Main'
 import Goals from './components/Goals/Goals'
+import Profile from './components/Profile/Profile';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route path='/joblisting' component={JobListing}/>
       <Route path='/home' component={Main}/>
       <Route path='/goals' component={Goals}/>
+      <Route path='/profile' component={Profile}/>
   
     </Switch>
   </React.Fragment>

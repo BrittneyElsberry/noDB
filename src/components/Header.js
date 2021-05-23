@@ -35,9 +35,11 @@ return <Flex className="headerContainer">
                             Goals
                         </Button></Link>
                        
+                       <Link to='/profile'>
                         <Button size="sm"  ml='2'>
                             Profile
                         </Button>
+                        </Link>
                      
                        <Link to='/'><Button size="sm"  ml='2' onClick={logout}>
                             Logout

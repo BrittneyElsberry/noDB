@@ -62,8 +62,8 @@ const getComments = ()=>{
      .catch(error=> console.log(error))
  }
 
- console.log(goal_id, 'props or not props')
- console.log(allComments, 'AllComments object')
+//  console.log(goal_id, 'props or not props')
+//  console.log(allComments, 'AllComments object')
 
 
 
@@ -89,33 +89,64 @@ const getComments = ()=>{
                     return c.goal_id === goal_id}).map(allC=>{
                     
 
-                    if(allC.goal_id === goal_id){
-                    
-                    return <li key={allC.comment_id} className='commentList'>
-                            {allC.comment}
-                        <EditComments editComment={editComment}  handleEdit={handleEdit} editing={editing} />
-                                                                    
-                        
-                                                                    <Box>
-                                                                    <Moment format='MM/DD/YYYY'>{allC.goal_id.date}</Moment> 
-                                                                    <Button size='xs'
-                                                                            onClick={()=>editComment(allC.comment_id, goal_id)}
-                                                                    ><AiFillEdit/>
-                                                                    </Button>
-                                                                    
-                                                                    
-                                                                    <Button  size='xs'
-                                                                             onClick={()=>deleteComment(allC.comment_id, goal_id)}   
-                                                                    ><MdDelete/></Button> 
-                                                                    </Box>
-                           
+                    if(allC.goal_id === goal_id ){
 
-                            </li> } 
+
+                        return <li key={allC.comment_id} className='commentList'>
+                        {allC.comment}
+                    <EditComments editComment={editComment}  handleEdit={handleEdit} editing={editing} />
+                                                                
+                    
+                                                                <Box>
+                                                                <Moment format='MM/DD/YYYY'>{allC.goal_id.date}</Moment> 
+                                                                <Button size='xs'
+                                                                        onClick={()=>editComment(allC.comment_id, goal_id)}
+                                                                ><AiFillEdit/>
+                                                                </Button>
+                                                                
+                                                                
+                                                                <Button  size='xs'
+                                                                         onClick={()=>deleteComment(allC.comment_id, goal_id)}   
+                                                                ><MdDelete/></Button> 
+                                                                </Box>
+                       
+
+                        </li> }
+                        
+                    // else if (allC === allC.length){
+
+
+
+                        // return <li key={allC.comment_id} className='commentList'>
+                        //         {allC.comment}
+                        //     <EditComments editComment={editComment}  handleEdit={handleEdit} editing={editing} />
+                                                                        
                             
-                    })
+                        //                                                 <Box>
+                        //                                                 <Moment format='MM/DD/YYYY'>{allC.goal_id.date}</Moment> 
+                        //                                                 <Button size='xs'
+                        //                                                         onClick={()=>editComment(allC.comment_id, goal_id)}
+                        //                                                 ><AiFillEdit/>
+                        //                                                 </Button>
+                                                                        
+                                                                        
+                        //                                                 <Button  size='xs'
+                        //                                                          onClick={()=>deleteComment(allC.comment_id, goal_id)}   
+                        //                                                 ><MdDelete/></Button> 
+                        //                                                 </Box>
+                               
+    
+                        //         </li> }
+                                
+                        // })
+                })
+
+
+                    }    
+           
                     
                     
-}
+{/* } */}
 
 
                     <Box className='commentBox' padding={2}>
@@ -152,6 +183,9 @@ const getComments = ()=>{
                                                 
                                             } else if (index === allGoals.length){
                                                 setIndex(0)
+                                                return allGoals[0]
+                                                
+                                               
                                             }
                                         }
                                     }
